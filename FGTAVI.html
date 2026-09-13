@@ -1,0 +1,1461 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FAKE GTA VI — Beta 0.0.1</title>
+
+<meta name="description"
+content="FAKE GTA VI — original fan-made game. Discover the first beta version.">
+
+<meta name="keywords"
+content="FAKE GTA VI, Fake GTA 6, GTA 6 fan game, fakegta6">
+
+<meta name="author" content="FAKE GTA VI Team">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 8%,
+            rgba(255, 20, 147, 0.35),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 5% 45%,
+            rgba(255, 0, 110, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 70%,
+            rgba(210, 0, 150, 0.18),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #020002 0%,
+            #130009 25%,
+            #310018 50%,
+            #100006 72%,
+            #020002 100%
+        );
+
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 0, 128, 0.08),
+            transparent 55%
+        );
+
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 0, 120, 0.22),
+            transparent 48%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #ff008c;
+
+    filter: blur(230px);
+    opacity: 0.10;
+
+    pointer-events: none;
+}
+
+.logo {
+    position: relative;
+    z-index: 5;
+}
+
+.fake {
+    font-size: clamp(80px, 17vw, 240px);
+    font-weight: 900;
+
+    letter-spacing: 10px;
+
+    color: #ff1744;
+
+    text-shadow:
+        0 0 5px #ff1744,
+        0 0 15px #ff1744,
+        0 0 35px #ff1744,
+        0 0 70px #ff1744,
+        0 0 120px #ff1744;
+
+    animation: fakeGlow 2.5s infinite alternate;
+}
+
+.gta {
+    margin-top: -25px;
+
+    font-size: clamp(70px, 14vw, 200px);
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    color: #ff4fc3;
+
+    text-shadow:
+        0 0 5px #ff4fc3,
+        0 0 15px #ff4fc3,
+        0 0 35px #ff1493,
+        0 0 70px #ff1493,
+        0 0 130px #ff1493;
+}
+
+.blink-a {
+    display: inline-block;
+    animation: blinkA 1.4s infinite;
+}
+
+@keyframes blinkA {
+
+    0%, 40%, 100% {
+        opacity: 1;
+    }
+
+    46%, 54% {
+        opacity: 0.08;
+    }
+
+}
+
+.tagline {
+    position: relative;
+    z-index: 5;
+
+    margin-top: 35px;
+
+    color: #c7c7c7;
+
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+
+.beta {
+    margin-top: 15px;
+
+    color: #ff1744;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px #ff1744;
+}
+
+.hero-buttons {
+    position: relative;
+    z-index: 5;
+
+    margin-top: 40px;
+
+    display: flex;
+    gap: 20px;
+
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    padding: 15px 32px;
+
+    color: white;
+    text-decoration: none;
+
+    border: 2px solid #ff1744;
+    border-radius: 8px;
+
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 0 10px #ff1744,
+        inset 0 0 10px rgba(255, 23, 68, 0.1);
+}
+
+.button:hover {
+    background: #ff1744;
+
+    box-shadow:
+        0 0 20px #ff1744,
+        0 0 50px #ff1744;
+
+    transform: scale(1.07);
+}
+
+.button.pink {
+    border-color: #ff4fc3;
+    box-shadow: 0 0 10px #ff4fc3;
+}
+
+.button.pink:hover {
+    background: #ff1493;
+
+    box-shadow:
+        0 0 20px #ff4fc3,
+        0 0 50px #ff1493;
+}
+
+.scroll-down {
+    position: relative;
+    z-index: 5;
+
+    margin-top: 55px;
+
+    color: #aaa;
+    text-decoration: none;
+
+    font-size: 14px;
+    letter-spacing: 4px;
+
+    animation: arrowMove 1.5s infinite;
+}
+
+@keyframes arrowMove {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(9px);
+    }
+
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    position: relative;
+
+    padding: 120px 20px;
+
+    text-align: center;
+
+    background: transparent;
+}
+
+.section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #ff008c;
+
+    filter: blur(180px);
+    opacity: 0.07;
+
+    pointer-events: none;
+}
+
+.section-title {
+    position: relative;
+    z-index: 2;
+
+    font-size: 48px;
+
+    color: #ff4fc3;
+
+    text-shadow:
+        0 0 10px #ff4fc3,
+        0 0 30px #ff1493,
+        0 0 60px rgba(255, 20, 147, 0.5);
+
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    position: relative;
+    z-index: 2;
+
+    color: #aaa;
+
+    margin-bottom: 55px;
+}
+
+
+/* =========================
+   GAME SCREENSHOT
+========================= */
+
+.game-box {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1100px;
+    height: 500px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 0, 110, 0.18),
+            rgba(0, 0, 0, 0.55),
+            rgba(255, 0, 150, 0.15)
+        );
+
+    border: 1px solid rgba(255, 79, 195, 0.45);
+
+    box-shadow:
+        0 0 30px rgba(255, 20, 147, 0.18),
+        0 0 80px rgba(255, 0, 110, 0.08),
+        inset 0 0 70px rgba(255, 20, 147, 0.08);
+
+    color: #aaa;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+.download-area {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1100px;
+    height: 430px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            rgba(255, 20, 147, 0.20),
+            transparent 65%
+        );
+}
+
+.download-area::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 45px;
+    left: 50%;
+
+    width: 700px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: #ff1493;
+
+    box-shadow:
+        0 0 10px #ff1493,
+        0 0 30px #ff1493,
+        0 0 70px #ff1493;
+
+    opacity: 0.7;
+}
+
+
+/* =========================
+   CAR
+========================= */
+
+.download-car {
+    position: relative;
+
+    width: 420px;
+    height: 220px;
+
+    margin-bottom: 55px;
+
+    z-index: 10;
+
+    animation: carFloat 2.5s infinite ease-in-out;
+}
+
+@keyframes carFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+.download-body {
+    position: absolute;
+
+    left: 30px;
+    bottom: 20px;
+
+    width: 360px;
+    height: 105px;
+
+    border-radius: 50px 70px 25px 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #444,
+            #1a1a1a 40%,
+            #050505
+        );
+
+    border: 2px solid #555;
+
+    box-shadow:
+        0 0 25px rgba(255, 23, 68, 0.4),
+        inset 0 0 20px rgba(255,255,255,0.04);
+}
+
+.download-body::before {
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+    bottom: -8px;
+
+    width: 320px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ff1493;
+
+    box-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493,
+        0 0 50px #ff1493;
+}
+
+.download-body::after {
+    content: "";
+
+    position: absolute;
+
+    right: 8px;
+    top: 40px;
+
+    width: 13px;
+    height: 27px;
+
+    border-radius: 5px;
+
+    background: #ff1744;
+
+    box-shadow:
+        0 0 10px #ff1744,
+        0 0 25px #ff1744;
+}
+
+.download-roof {
+    position: absolute;
+
+    left: 115px;
+    top: 15px;
+
+    width: 165px;
+    height: 75px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #222,
+            #080808
+        );
+
+    border-radius: 80px 80px 12px 12px;
+
+    border: 2px solid #444;
+}
+
+.download-window {
+    position: absolute;
+
+    left: 128px;
+    top: 25px;
+
+    width: 138px;
+    height: 52px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #050505,
+            #454545
+        );
+
+    border-radius: 35px 35px 8px 8px;
+
+    border: 2px solid #222;
+}
+
+.download-wheel {
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    bottom: 0;
+
+    background: #030303;
+
+    border-radius: 50%;
+
+    border: 7px solid #333;
+}
+
+.download-wheel.left {
+    left: 60px;
+}
+
+.download-wheel.right {
+    right: 60px;
+}
+
+
+/* =========================
+   NPC
+========================= */
+
+.npc {
+    position: absolute;
+
+    left: 210px;
+    top: -5px;
+
+    z-index: 30;
+
+    font-size: 68px;
+
+    transform-origin: bottom center;
+
+    animation: npcWave 0.7s infinite alternate;
+}
+
+@keyframes npcWave {
+
+    0% {
+        transform: rotate(-9deg) translateY(0);
+    }
+
+    100% {
+        transform: rotate(10deg) translateY(-5px);
+    }
+
+}
+
+.npc-message {
+    position: absolute;
+
+    left: 70px;
+    top: -125px;
+
+    width: 260px;
+
+    padding: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35, 0, 20, 0.96),
+            rgba(4, 0, 4, 0.96)
+        );
+
+    border: 2px solid #ff4fc3;
+
+    border-radius: 14px;
+
+    color: white;
+
+    font-size: 15px;
+    line-height: 1.5;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 15px #ff4fc3,
+        0 0 35px rgba(255,20,147,0.35);
+}
+
+.npc-message strong {
+    color: #ff4fc3;
+
+    font-size: 20px;
+
+    text-shadow:
+        0 0 10px #ff1493;
+}
+
+.npc-download {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 9px 18px;
+
+    background: #ff1744;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 15px #ff1744;
+}
+
+
+/* =========================
+   DOWNLOAD CARDS
+========================= */
+
+.downloads {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1000px;
+
+    margin: 45px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+
+    gap: 20px;
+}
+
+.download-card {
+    padding: 30px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(40, 0, 24, 0.75),
+            rgba(3, 0, 3, 0.75)
+        );
+
+    border: 1px solid rgba(255, 79, 195, 0.25);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(8px);
+
+    transition: 0.25s;
+}
+
+.download-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #ff4fc3;
+
+    box-shadow:
+        0 0 30px rgba(255, 20, 147, 0.3);
+}
+
+.download-icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.download-card h3 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.download-card p {
+    color: #888;
+
+    margin-bottom: 20px;
+}
+
+.download-button {
+    display: inline-block;
+
+    padding: 10px 22px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid #ff1744;
+
+    border-radius: 5px;
+}
+
+
+/* =========================
+   SYSTEM REQUIREMENTS
+========================= */
+
+.requirements {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.requirement-box {
+    padding: 30px;
+
+    text-align: left;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(40, 0, 24, 0.72),
+            rgba(3, 0, 3, 0.72)
+        );
+
+    border: 1px solid rgba(255, 79, 195, 0.25);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(8px);
+}
+
+.requirement-box h3 {
+    color: #ff4fc3;
+
+    font-size: 27px;
+
+    margin-bottom: 20px;
+}
+
+.requirement-box p {
+    color: #aaa;
+
+    margin: 11px 0;
+}
+
+.fps {
+    color: #ff1744 !important;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 10px #ff1744;
+}
+
+
+/* =========================
+   BETA UPDATE
+========================= */
+
+.beta-update {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 45px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 0, 28, 0.8),
+            rgba(3, 0, 3, 0.8)
+        );
+
+    border: 2px solid #ff1744;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 25px rgba(255, 23, 68, 0.2),
+        inset 0 0 40px rgba(255, 20, 147, 0.06);
+}
+
+.beta-version {
+    color: #ff1744;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 10px #ff1744,
+        0 0 30px #ff1744;
+}
+
+.beta-label {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 7px 14px;
+
+    border: 1px solid #ff4fc3;
+
+    border-radius: 20px;
+
+    color: #ff4fc3;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.beta-update h3 {
+    margin-top: 25px;
+
+    font-size: 25px;
+}
+
+.beta-update p {
+    margin-top: 12px;
+
+    color: #999;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: relative;
+
+    padding: 80px 20px 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20, 0, 12, 0.45),
+            rgba(1, 0, 1, 0.75)
+        );
+
+    border-top: 1px solid rgba(255,79,195,0.2);
+}
+
+footer h2 {
+    margin-bottom: 30px;
+
+    color: #ff4fc3;
+
+    text-shadow:
+        0 0 15px #ff1493;
+}
+
+.socials {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.social {
+    padding: 13px 24px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid #3a2031;
+
+    border-radius: 6px;
+}
+
+.copyright {
+    margin-top: 35px;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fakeGlow {
+
+    from {
+        text-shadow:
+            0 0 5px #ff1744,
+            0 0 20px #ff1744,
+            0 0 40px #ff1744;
+    }
+
+    to {
+        text-shadow:
+            0 0 10px #ff1744,
+            0 0 35px #ff1744,
+            0 0 80px #ff1744,
+            0 0 130px #ff1744;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .requirements {
+        grid-template-columns: 1fr;
+    }
+
+    .game-box {
+        height: 300px;
+    }
+
+    .tagline {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .download-car {
+        transform: scale(0.7);
+    }
+
+    .download-area {
+        height: 380px;
+    }
+
+    .npc-message {
+        transform: scale(0.8);
+
+        transform-origin:
+            bottom center;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="logo">
+
+        <div class="fake">
+            FAKE
+        </div>
+
+        <div class="gta">
+            GT<span class="blink-a">A</span> VI
+        </div>
+
+    </div>
+
+    <div class="tagline">
+        AN ORIGINAL FAN-MADE GAME
+    </div>
+
+    <div class="beta">
+        BETA 0.0.1
+    </div>
+
+    <div class="hero-buttons">
+
+        <a href="#download" class="button">
+            DOWNLOAD
+        </a>
+
+        <a href="#game" class="button pink">
+            VIEW GAME
+        </a>
+
+    </div>
+
+    <a href="#game" class="scroll-down">
+        PRZEJDŹ DALEJ ↓
+    </a>
+
+</section>
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<section class="section" id="game">
+
+    <h2 class="section-title">
+        THE GAME
+    </h2>
+
+    <p class="section-subtitle">
+        Welcome to the world of FAKE GTA VI
+    </p>
+
+    <div class="game-box">
+        TU WSTAWIMY SCREENSHOT Z GRY
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DOWNLOAD
+========================= -->
+
+<section class="section" id="download">
+
+    <h2 class="section-title">
+        DOWNLOAD
+    </h2>
+
+    <p class="section-subtitle">
+        Pobierz pierwszą wersję beta
+    </p>
+
+
+    <div class="download-area">
+
+        <div class="download-car">
+
+            <div class="download-body"></div>
+
+            <div class="download-roof"></div>
+
+            <div class="download-window"></div>
+
+            <div class="download-wheel left"></div>
+
+            <div class="download-wheel right"></div>
+
+
+            <div class="npc">
+
+                🧍
+
+                <div class="npc-message">
+
+                    <strong>
+                        🔥 POBIERZ BETA!
+                    </strong>
+
+                    <br>
+
+                    FAKE GTA VI 0.0.1
+
+                    <br>
+
+                    <a
+                        href="#downloads"
+                        class="npc-download"
+                    >
+                        POBIERZ TERAZ
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="downloads" id="downloads">
+
+
+        <div class="download-card">
+
+            <div class="download-icon">
+                🪟
+            </div>
+
+            <h3>
+                Windows 10
+            </h3>
+
+            <p>
+                64-bit • BETA 0.0.1
+            </p>
+
+            <a href="#" class="download-button">
+                DOWNLOAD
+            </a>
+
+        </div>
+
+
+        <div class="download-card">
+
+            <div class="download-icon">
+                🪟
+            </div>
+
+            <h3>
+                Windows 11
+            </h3>
+
+            <p>
+                64-bit • BETA 0.0.1
+            </p>
+
+            <a href="#" class="download-button">
+                DOWNLOAD
+            </a>
+
+        </div>
+
+
+        <div class="download-card">
+
+            <div class="download-icon">
+                🤖
+            </div>
+
+            <h3>
+                Android
+            </h3>
+
+            <p>
+                Coming soon
+            </p>
+
+            <a href="#" class="download-button">
+                SOON
+            </a>
+
+        </div>
+
+
+        <div class="download-card">
+
+            <div class="download-icon">
+                🍎
+            </div>
+
+            <h3>
+                macOS
+            </h3>
+
+            <p>
+                Coming soon
+            </p>
+
+            <a href="#" class="download-button">
+                SOON
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     REQUIREMENTS
+========================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        SYSTEM REQUIREMENTS
+    </h2>
+
+    <p class="section-subtitle">
+        Beta target performance
+    </p>
+
+
+    <div class="requirements">
+
+
+        <div class="requirement-box">
+
+            <h3>
+                Windows 10
+            </h3>
+
+            <p>
+                <strong>OS:</strong>
+                Windows 10 64-bit
+            </p>
+
+            <p>
+                <strong>CPU:</strong>
+                Ryzen 5 / Intel Core i5
+            </p>
+
+            <p>
+                <strong>RAM:</strong>
+                8 GB
+            </p>
+
+            <p>
+                <strong>GPU:</strong>
+                GTX 1050 / RX 570
+            </p>
+
+            <p>
+                <strong>Storage:</strong>
+                10 GB
+            </p>
+
+            <p class="fps">
+                ⚡ TARGET: STABLE 60 FPS
+            </p>
+
+        </div>
+
+
+        <div class="requirement-box">
+
+            <h3>
+                Windows 11
+            </h3>
+
+            <p>
+                <strong>OS:</strong>
+                Windows 11 64-bit
+            </p>
+
+            <p>
+                <strong>CPU:</strong>
+                Ryzen 5 / Intel Core i5
+            </p>
+
+            <p>
+                <strong>RAM:</strong>
+                8 GB
+            </p>
+
+            <p>
+                <strong>GPU:</strong>
+                GTX 1050 / RX 570
+            </p>
+
+            <p>
+                <strong>Storage:</strong>
+                10 GB
+            </p>
+
+            <p class="fps">
+                ⚡ TARGET: STABLE 60 FPS
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FIRST BETA UPDATE
+========================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        GAME UPDATES
+    </h2>
+
+    <p class="section-subtitle">
+        Latest version of FAKE GTA VI
+    </p>
+
+
+    <div class="beta-update">
+
+        <div class="beta-version">
+            FAKE GTA VI 0.0.1
+        </div>
+
+        <div class="beta-label">
+            FIRST BETA
+        </div>
+
+        <h3>
+            🚀 FIRST PUBLIC BETA
+        </h3>
+
+        <p>
+            Pierwsza wersja beta FAKE GTA VI.
+            Projekt jest nadal rozwijany i w przyszłości
+            otrzyma nowe funkcje, NPC, pojazdy oraz elementy świata.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h2>
+        CONTACT & SOCIALS
+    </h2>
+
+    <div class="socials">
+
+        <a href="#" class="social">
+            Discord
+        </a>
+
+        <a href="#" class="social">
+            Instagram
+        </a>
+
+        <a href="#" class="social">
+            TikTok
+        </a>
+
+        <a href="#" class="social">
+            YouTube
+        </a>
+
+    </div>
+
+    <div class="copyright">
+        FAKE GTA VI © 2026 • BETA 0.0.1
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
+
